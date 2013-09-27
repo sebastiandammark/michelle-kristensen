@@ -1,0 +1,382 @@
+/* Media Queries
+--------------------------------------------------------------------------------*/
+@mixin until($bp) {
+  @if not $oldie {
+    @media only screen and (max-width: em($bp - 1px)) {
+      @content;
+    }
+  }
+}
+
+@mixin between($bp1, $bp2) {
+  @if not $oldie {
+    @media only screen and (min-width: em($bp1)) and (max-width: em($bp2 - 1px)) {
+      @content;
+    }
+  }
+}
+
+@mixin at-least($bp) {
+  @if $oldie {
+    @content;
+  }
+  @else {
+    @media only screen and (min-width: em($bp)) {
+      @content;
+    }
+  }
+}
+
+@mixin hires {
+  @media (min-resolution: 1.5dppx), (min-resolution: 144dpi), (-webkit-min-device-pixel-ratio: 1.5) {
+    @content;
+  }
+}
+
+
+/* Progressive enhancement
+--------------------------------------------------------------------------------*/
+// Modernizr feature (base CSS class name)
+@mixin enhance-with($feature) {
+  .#{$feature} & {
+    @content;
+  }
+}
+
+// Modernizr feature (base CSS class name)
+@mixin degrade-from($feature, $no-js: true) {
+  @if $feature == "js" or not $no-js {
+    .no-#{$feature} & {
+      @content;
+    }
+  }
+  @else {
+    .no-#{$feature} &,
+    .no-js & {
+      @content;
+    }
+  }
+}
+
+// SVG background image with fallback
+@mixin pe-background($name, $size: false) {
+  $png: "lowres/#{$name}.png";
+  .svg & {
+    background-image: inline-image("svg/#{$name}.svg");
+  }
+  .no-svg &,
+  .no-js & {
+    background-image: image-url($png);
+  }
+  @if ($size) {
+    width: image-width($png);
+    height: image-height($png);
+  }
+}
+
+// SVG background image with fallback
+@mixin pe-background-png($name, $size: false) {
+  $png: "lowres/#{$name}.png";
+  background-image: inline-image($png);
+  @include hires {
+    @include background-size(image-width($png), image-height($png));
+    background-image: inline-image("hires/#{$name}.png");
+  }
+  @if ($size) {
+    width: image-width($png);
+    height: image-height($png);
+  }
+}
+
+@mixin pe-background-with-dimensions($name) {
+  $png: "lowres/#{$name}.png";
+  @include pe-background($name);
+  width: image-width($png);
+  height: image-height($png);
+}
+
+@mixin pe-replace-text-with-dimensions($name, $x: 50%, $y: 50%) {
+  $png: "lowres/#{$name}.png";
+  @include hide-text;
+  @include pe-background($name);
+  background-repeat: no-repeat;
+  background-position: $x $y;
+  width: image-width($png);
+  height: image-height($png);
+}
+
+@mixin pe-background-tile($name) {
+  $lowres: "lowres-tiles/#{$name}.png";
+  background-image: inline-image($lowres);
+  background-repeat: repeat;
+
+  @include hires {
+    @include background-size(image-width($lowres) image-height($lowres));
+    background-image: image-url("hires-tiles/#{$name}.png");
+  }
+}
+
+@mixin pe-background-sprite($img-path, $sprite, $inline-svg: $replace-text-pe-inline-svg, $with-dimensions: $replace-text-pe-with-dimensions) {
+  $png-path: $img-path + "/*.png";
+  $sprite-map: sprite-map($png-path);
+
+  // Build SVG file name
+  $svg-file: $img-path + "/#{$sprite}.svg";
+
+  // Default Sprite File
+  $sprite-file: "" !default;
+
+  @if $with-dimensions {
+    // Get Sprite File for Height/Width
+    $sprite-file: sprite-file($sprite-map, $sprite);
+
+    // Put the height/width of the image in
+    width: image-width($sprite-file);
+    height: image-height($sprite-file);
+  }
+
+  @include enhance-with("svg") {
+    // Inline the SVG so that advanced browsers and future tech doesn't need the extra HTTP requests for the SVG
+    @if $inline-svg {
+      background-image: inline-image($svg-file);
+    }
+    @else {
+      background-image: image-url($svg-file);
+    }
+    // No repeating backgrounds, please
+    background-repeat: no-repeat;
+    // Set background size to ensure that our SVG is the right size.
+    @if $with-dimensions {
+      background-size: image-width($sprite-file) image-height($sprite-file);
+    }
+  }
+
+  // Degrade from SVG
+  @include degrade-from("svg") {
+    // Extend the Sprite Background
+    @extend %#{sprite-map-name($sprite-map)}-image-map;
+    // Call the Sprite'd image's position.
+    @include sprite($sprite-map, $sprite);
+  }
+}
+
+
+/* Trianle
+--------------------------------------------------------------------------------*/
+@mixin triangle($color: #000, $height: 1em, $width: 1em, $angle: 0) {
+
+  @if nth($angle, 1) == "top" or nth($angle, 1) == "bottom" {
+    $angle: "#{$angle}";
+  }
+
+  @if $angle == "top" {
+    $angle: 0;
+  }
+  @if $angle == "top right" {
+    $angle: 45 * 7;
+  }
+  @if $angle == "right" {
+    $angle: 45 * 2;
+  }
+  @if $angle == "bottom right" {
+    $angle: 45 * 1;
+  }
+  @if $angle == "bottom" {
+    $angle: 45 * 4;
+  }
+  @if $angle == "bottom left" {
+    $angle: 45 * 3;
+  }
+  @if $angle == "left" {
+    $angle: 45 * 6;
+  }
+  @if $angle == "top left" {
+    $angle: 45 * 5;
+  }
+
+  @if unit($height) == "" or unit($height) == "%" {
+    @debug "in triangle #{$height} is not a compatable unit for height."
+  }
+
+  @if unit($width) == "" or unit($width) == "%" {
+    @debug "in triangle #{$width} is not a compatable unit for width."
+  }
+
+  // offset 45deg to make each side start at 0
+  $deg: $angle + 45;
+  // if units, remove units
+  @if unit($deg) == deg {
+    $deg: $deg / 1deg;
+  }
+  // shift to be on a scale from 0 to 90.
+  @while $deg > 90 {
+    $deg: $deg - 90;
+  }
+  @while $deg < 0 {
+    $deg: $deg + 90;
+  }
+  // Get a ratio of 90 to multiply by.
+  $deg: $deg / 90;
+
+  // make sure metrics are reset
+  display: block;
+  width: 0;
+  height: 0;
+  border: 0 solid transparent;
+
+  // run through sides
+  @if $angle <= 45 or $angle > 315 {
+    border-bottom-color: $color;
+    border-width: 0 ($width * abs($deg - 1)) $height ($width * $deg);
+  }
+  @if $angle > 45 and $angle <= 135 {
+    border-left-color: $color;
+    border-width: ($height * $deg) 0 ($height * abs($deg - 1)) $width;
+  }
+  @if $angle > 135 and $angle <= 225 {
+    border-top-color: $color;
+    border-width: $height ($width * $deg) 0 ($width * abs($deg - 1));
+  }
+  @if $angle > 225 and $angle <= 315 {
+    border-right-color: $color;
+    border-width: ($height * abs($deg - 1)) $width ($height * $deg) 0;
+  }
+}
+
+
+/* Intrinsic ratio
+--------------------------------------------------------------------------------*/
+$intrinsic-ratio: 16/9 !default;
+$intrinsic-ratio-width: 100% !default;
+$intrinsic-ratio-elements: '> *' !default;
+$intrinsic-ratio-extend: true !default;
+$intrinsic-ratio-direction: top !default;
+
+@mixin intrinsic-ratio-parent($extend: $intrinsic-ratio-extend) {
+    @if $extend {
+      @extend %intrinsic-ratio-parent;
+    }
+    @else {
+      position: relative;
+      height: 0;
+    }
+}
+
+@mixin intrinsic-ratio-child($extend: $intrinsic-ratio-extend) {
+  @if $extend {
+    @extend %intrinsic-ratio-child;
+  }
+  @else {
+    display: block;
+    position: absolute;
+    width: 100% !important; // Nuke the external styles
+    height: 100% !important; // Nuke the external styles
+    top: 0;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@mixin intrinsic-ratio-ratio($ratio: $intrinsic-ratio, $width: $intrinsic-ratio-width, $direction: $intrinsic-ratio-direction) {
+  padding-#{$direction}: (1 / $ratio) * $width;
+  width: $width;
+}
+
+@mixin intrinsic-ratio($ratio: $intrinsic-ratio, $width: $intrinsic-ratio-width, $elements: $intrinsic-ratio-elements, $extend: $intrinsic-ratio-extend, $direction: $intrinsic-ratio-direction) {
+  @include intrinsic-ratio-parent($extend);
+
+  @include intrinsic-ratio-ratio($ratio, $width, $direction);
+
+  @each $element in $elements {
+    #{$element} {
+      @include intrinsic-ratio-child($extend);
+    }
+  }
+}
+
+@mixin ir($ratio: $intrinsic-ratio, $width: $intrinsic-ratio-width, $elements: $intrinsic-ratio-elements, $extend: $intrinsic-ratio-extend, $direction: $intrinsic-ratio-direction) {
+  @include intrinsic-ratio($ratio, $width, $elements, $extend, $direction);
+}
+
+%intrinsic-ratio-parent {
+  @include intrinsic-ratio-parent(false);
+}
+
+%intrinsic-ratio-child {
+  @include intrinsic-ratio-child(false);
+}
+
+
+/* Features
+--------------------------------------------------------------------------------*/
+@mixin adjust-for-fixed-header {
+  .jb-fixed-header & {
+    padding-top: $topbar-height;
+    @include at-least($bp-small) {
+      padding-top: $topbar-height-large;
+    }
+  }
+}
+
+
+/* Misc
+--------------------------------------------------------------------------------*/
+@mixin clearfix {
+  &:before,
+  &:after {
+    content: ".";
+    display: block;
+    height: 0;
+    overflow: hidden;
+  }
+
+  &:after {
+    clear: both;
+  }
+
+  /*
+  & {
+    zoom: 1; // IE < 8
+  }
+  */
+}
+
+@mixin input-placeholder {
+  @if $experimental-support-for-webkit {
+    &::-webkit-input-placeholder {
+      @content;
+    }
+  }
+  @if $experimental-support-for-mozilla {
+    &:-moz-placeholder {
+      @content;
+    }
+  }
+  @if $experimental-support-for-microsoft {
+    &:-ms-input-placeholder {
+      @content;
+    }
+  }
+  // Polyfill styling.
+  &.placeholder {
+    @content;
+  }
+}
+
+@mixin font-size($to-size, $from-size: $base-font-size) {
+  font-size: 1em * $to-size / $from-size;
+}
+
+/**
+ * Completely remove from the flow but leave available to screen readers.
+ */
+@mixin visible-hidden {
+  position: absolute !important;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  border: 0;
+  //clip: rect(1px 1px 1px 1px); // IE6, IE7
+  clip: rect(1px, 1px, 1px, 1px);
+}
