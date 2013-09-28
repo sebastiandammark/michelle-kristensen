@@ -1,0 +1,30 @@
+div.container {
+	position: relative;
+	width: 850px;
+	margin: 0 auto;
+	background: #fff;
+	min-height: 350px;
+	margin-top: 70px;
+	border: #f3f3f3;
+	padding: 10px 15px;
+}
+
+a.home {
+	position: absolute;
+	display: block;
+	top: -35px;
+	left: -30px;
+	width: 240px;
+	height: 240px;
+	background: image-url('logo.png') center no-repeat;
+	text-indent: -9999px;
+}
+
+header h1, header h2 {
+	text-align: center;
+	margin-left: 195px;
+}
+
+header h2 {
+	margin-bottom: 100px;
+}

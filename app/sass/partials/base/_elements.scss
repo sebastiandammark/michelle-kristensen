@@ -32,3 +32,15 @@ video {
   //-webkit-user-select: none; // Disable select/copy.
   background-repeat: no-repeat;
 }
+
+html, body {
+	height: 100%;
+	width: 100%;
+	border: none;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background: image-url('body_bg.gif');
+}

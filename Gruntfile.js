@@ -4,18 +4,18 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     concat: {
-			dev: {
-        src: ['app/js/*.js'],
-        dest: 'public/js/functions.min.js'
-      },
-			dist: {
-        src: ['app/js/*.js'],
+			js: {
+        src: ['app/assets/js/*.js', 'app/js/*.js'],
         dest: 'tmp/js/functions.min.js'
+      },
+			css: {
+        src: ['app/assets/css/*.css', 'tmp/css/*.css'],
+        dest: 'public/css/styles.css'
       }
     },
     uglify: {
-      dist: {
-        src: '<%= concat.dist.dest %>',
+      js: {
+        src: '<%= concat.js.dest %>',
         dest: 'public/js/functions.min.js'
       }
     },
@@ -44,7 +44,8 @@ module.exports = function(grunt) {
 	      options: {
 					httpPath: 'public',
 	        sassDir: 'app/sass',
-	        cssDir: 'public/css',
+					imagesDir: 'images',
+	        cssDir: 'tmp/css',
 	        environment: 'production',
 					outputStyle: 'compressed',
 					relativeAssets: true,
@@ -56,7 +57,8 @@ module.exports = function(grunt) {
 	      options: {
 					httpPath: 'public',
 	        sassDir: 'app/sass',
-	        cssDir: 'public/css',
+					imagesDir: 'images',
+	        cssDir: 'tmp/css',
 					environment: 'development',
 					outputStyle: 'expanded',
 					relativeAssets: true,
@@ -121,20 +123,32 @@ module.exports = function(grunt) {
 		'ftp-deploy': {
 		  stage: {
 		    auth: {
-		      host: '127.0.0.1',
+		      host: '192.168.2.100',
 		      port: 21,
-		      authKey: 'figureitout'
+		      authKey: 'stage'
 		    },
 		    src: 'public',
-		    dest: '{destination path}',
+		    dest: 'Web/mk',
 		    exclusions: ['public/**/.DS_Store', 'public/**/Thumbs.db'],
 		    server_sep: '/'
+		  }
+		},
+		copy: {
+		  assets: {
+		    files: [
+		      {expand: true, flatten: true, src: ['app/assets/fonts/*'], dest: 'public/fonts/', filter: 'isFile'}
+		    ]
+		  },
+			temps: {
+		    files: [
+		      {expand: true, flatten: true, src: ['<%= concat.js.dest %>'], dest: 'public/js/', filter: 'isFile'}
+		    ]
 		  }
 		},
 		watch: {
 		  css: {
 		    files: ['app/**/*.scss', 'app/**/*.js'],
-		    tasks: ['compass:dev', 'concat:dev'],
+		    tasks: ['imagemin', 'copy:assets', 'compass:dev', 'concat:js', 'concat:css', 'copy:temps', 'clean'],
 		    options: {
 		      livereload: true,
 		    },
@@ -150,10 +164,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-imagemin');
 	grunt.loadNpmTasks('grunt-ftp-deploy');
+	grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   // Default task.
-  grunt.registerTask('default', ['watch', 'concat:dev', 'compass:dev', 'clean', 'imagemin']);
-  grunt.registerTask('build', ['concat:dist', 'uglify:dist', 'compass:dist', 'clean', 'imagemin']);
+  grunt.registerTask('default', ['watch']);
+  grunt.registerTask('build', ['imagemin', 'copy:assets', 'compass:dist', 'concat:js', 'concat:css', 'uglify:js', 'clean']);
   grunt.registerTask('deploy:stage', ['build', 'ftp-deploy:stage']);
 };
