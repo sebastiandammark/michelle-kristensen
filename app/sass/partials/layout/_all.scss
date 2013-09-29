@@ -3,10 +3,13 @@ div.container {
 	width: 850px;
 	margin: 0 auto;
 	background: #fff;
-	min-height: 350px;
 	margin-top: 70px;
-	border: #f3f3f3;
+	border: 1px solid #f3f3f3;
 	padding: 10px 15px;
+	
+	&.content {
+		margin-top: 40px;
+	}
 }
 
 a.home {

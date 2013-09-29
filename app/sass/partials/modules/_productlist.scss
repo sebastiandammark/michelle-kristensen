@@ -1,0 +1,108 @@
+.footersection {
+	height: 160px;
+	width: 100%;
+	padding: 4px;
+	background-color: #fbeaef;
+	font-size: 0px;
+	
+	> h2 {
+		width: 25%;
+		display: inline-block;
+		font-family: 'Univers';
+		font-size: 150px;
+		text-transform: uppercase;
+		vertical-align: top;
+		margin: 0;
+		padding: 0;
+		color: #710f14;
+	}
+	
+	&.instagram > h2 {
+		color: #000;
+		font-size: 65px;
+	}
+}
+
+.product {
+	position: relative;
+	display: inline-block;
+	overflow: hidden;
+	vertical-align: top;
+	background-color: #fff;
+	width: 25%;
+	height: 100%;
+	color: #000;
+	font-size: 14px;
+	
+	a {
+		display: block;
+		text-decoration: none;
+		text-transform: uppercase;
+		color: #000;
+		
+		h1, h2 {
+			color: #000;
+			font-family: Univers;
+			margin: 0;
+			padding: 0;
+		}
+		
+		h1 {
+			font-size: 73px;
+			line-height: 84px;
+			height: 70px;
+		}
+		
+		h2 {
+			font-size: 38px;
+			line-height: 30px;
+		}
+		
+		&.addtocart {
+			position: absolute;
+			bottom: 0px;
+			left: 5px;
+			text-transform: uppercase;
+			font-weight: bold;
+		}
+	}
+	
+	.manchet, .addtocart, .price {
+		padding: 0 5px;
+	}
+	
+	.price {
+		position: absolute;
+		bottom: 0px;
+		right: 5px;
+	}
+	
+	img {
+		display: block;
+		margin: 0 auto 10px;
+	}
+}
+
+.instagram {
+	.images {
+		display: inline-block;
+		width: 75%;
+		background: #fff;
+		padding: 4px;
+		
+		a {
+			display: inline-block;
+			width: 146px;
+			margin-right: 4px;
+			
+			&.last {
+				margin: 0;
+			}
+			
+			img {
+				width: 100%;
+				height: auto;
+			}
+		}
+	}
+}
