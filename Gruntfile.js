@@ -6,11 +6,15 @@ module.exports = function(grunt) {
     concat: {
 			js: {
         src: ['app/assets/js/*.js', 'app/js/*.js'],
-        dest: 'tmp/js/functions.min.js'
+        dest: 'concat/js/functions.min.js'
       },
 			css: {
-        src: ['app/assets/css/*.css', 'tmp/css/*.css'],
-        dest: 'public/css/styles.css'
+        src: ['tmp/css/*.css', 'app/assets/css/*.css'],
+        dest: 'public/css/styles.min.css'
+      },
+			cssdist: {
+        src: ['tmp/css/*.css', 'app/assets/css/*.css'],
+        dest: 'concat/css/styles.css'
       }
     },
     uglify: {
@@ -40,19 +44,6 @@ module.exports = function(grunt) {
       },
     },
 		compass: {
-	    dist: {
-	      options: {
-					httpPath: 'public',
-	        sassDir: 'app/sass',
-					imagesDir: 'images',
-	        cssDir: 'tmp/css',
-	        environment: 'production',
-					outputStyle: 'compressed',
-					relativeAssets: true,
-					noLineComments: true,
-					force: true
-	      },
-	    },
 	    dev: {
 	      options: {
 					httpPath: 'public',
@@ -63,10 +54,10 @@ module.exports = function(grunt) {
 					outputStyle: 'expanded',
 					relativeAssets: true,
 					noLineComments: false
-	      },
+	      }
 	    }
 	  },
-		clean: ["tmp"],
+		clean: ['tmp', 'concat', 'public/css', 'public/js'],
 		imagemin: {
 	    png: {
 	      options: {
@@ -136,7 +127,8 @@ module.exports = function(grunt) {
 		copy: {
 		  assets: {
 		    files: [
-		      {expand: true, flatten: true, src: ['app/assets/fonts/*'], dest: 'public/fonts/', filter: 'isFile'}
+		      {expand: true, flatten: true, src: ['app/assets/fonts/*'], dest: 'public/fonts/', filter: 'isFile'},
+					{expand: true, flatten: true, src: ['app/markup/*'], dest: 'public/', filter: 'isFile'}
 		    ]
 		  },
 			temps: {
@@ -145,15 +137,19 @@ module.exports = function(grunt) {
 		    ]
 		  }
 		},
-		watch: {
-		  css: {
-		    files: ['app/**/*.scss', 'app/**/*.js'],
-		    tasks: ['imagemin', 'copy:assets', 'compass:dev', 'concat:js', 'concat:css', 'copy:temps', 'clean'],
-		    options: {
-		      livereload: true,
-		    },
-		  },
+		cssmin: {
+		  minify: {
+		    expand: true,
+		    cwd: 'concat/css/',
+		    src: ['*.css', '!*.min.css'],
+		    dest: 'public/css/',
+		    ext: '.min.css'
+		  }
 		},
+		watch: {
+		  files: ['app/sass/**/*.scss', 'app/js/**/*.js', 'app/markup/**/*.html'],
+	    tasks: ['build']
+		}
   });
 
   // These plugins provide necessary tasks.
@@ -165,10 +161,13 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-imagemin');
 	grunt.loadNpmTasks('grunt-ftp-deploy');
 	grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   // Default task.
   grunt.registerTask('default', ['watch']);
-  grunt.registerTask('build', ['imagemin', 'copy:assets', 'compass:dist', 'concat:js', 'concat:css', 'uglify:js', 'clean']);
+  grunt.registerTask('build', ['clean', 'imagemin', 'copy:assets', 'compass:dev', 'concat:js', 'concat:css', 'cssmin:minify', 'copy:temps']);
+  grunt.registerTask('dist', ['clean', 'imagemin', 'copy:assets', 'compass:dev', 'concat:js', 'concat:cssdist', 'cssmin:minify', 'copy:temps']);
   grunt.registerTask('deploy:stage', ['build', 'ftp-deploy:stage']);
+  grunt.registerTask('deploy:dist', ['dist', 'ftp-deploy:stage']);
 };

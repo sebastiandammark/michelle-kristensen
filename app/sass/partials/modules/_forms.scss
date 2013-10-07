@@ -1,0 +1,115 @@
+input.text, textarea, select {
+	@include input-placeholder {
+		color: #000;
+		text-transform: uppercase;
+	}
+	
+	background-color: #cccccc;
+	height: 32px;
+	line-height: 32px;
+	border: none;
+	margin: 0 0 5px 0;
+	padding: 0;
+	width: 100%;
+	outline: none;
+	padding: 0 5px;
+	display: block
+}
+
+select option {
+	color: #000;
+	text-transform: uppercase;
+}
+
+input.checkbox {
+	visibility: hidden;
+}
+
+input.submitter {
+	background-color: #fbe9ef;
+	border: 1px solid #efdfe5;
+	height: 32px;
+	line-height: 32px;
+	padding: 0 5px;
+	text-transform: uppercase;
+	font-weight: 400;
+	display: block;
+	margin: 5px 0 0 0;
+	width: 100%;
+	font-size: 14px;
+	
+	&:hover {
+		cursor: pointer;
+		background-color: #cccccc;
+		border-color: #cccccc;
+	}
+}
+
+label.checkbox {
+	display: inline-block;
+	background-color: #fbe9ef;
+	border: 1px solid #efdfe5;
+	height: 32px;
+	line-height: 32px;
+	padding: 0 5px;
+	margin: 0;
+	text-transform: uppercase;
+	font-weight: 400;
+	
+	&:hover {
+		cursor: pointer;
+		background-color: #cccccc;
+		border-color: #cccccc;
+	}
+	
+	&.active {
+		background-color: #cccccc;
+		border-color: #cccccc;
+	}
+}
+
+fieldset {
+	margin: 0 0 30px 0;
+	padding: 0;
+	border: none;
+	
+	legend {
+		padding: 0;
+		margin: 0;
+		padding-bottom: 15px;
+		text-transform: uppercase;
+		font-weight: bold;
+	}
+	
+	.helper {
+		font-size: 10px;
+		display: block;
+		margin-bottom: 15px;
+	}
+	
+	textarea {
+		height: 199px;
+		line-height: 20px;
+	}
+}
+
+form h4 {
+	font-size: 20px;
+	margin-top: 0px;
+}
+
+form.contact {
+	
+	div.split fieldset:last-child {
+		margin-bottom: 0;
+	}
+	
+	span.newslettertext {
+		font-size: 12px;
+		display: inline-block;
+		height: 32px;
+		line-height: 16px;
+		width: 57%;
+		vertical-align: top;
+	}
+}

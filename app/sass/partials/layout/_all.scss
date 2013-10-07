@@ -6,9 +6,14 @@ div.container {
 	margin-top: 70px;
 	border: 1px solid #f3f3f3;
 	padding: 10px 15px;
+	overflow: hidden;
 	
 	&.content {
 		margin-top: 40px;
+	}
+	
+	&.header {
+		overflow: visible;
 	}
 	
 	&.contact {
@@ -33,5 +38,9 @@ header h1, header h2 {
 }
 
 header h2 {
-	margin-bottom: 100px;
+	margin-bottom: 120px;
+}
+
+div.split {
+	width: 49%;
 }

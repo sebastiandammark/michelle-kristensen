@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+	<head>
+		<meta charset="utf-8">
+		<title>michelle-kristensen</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="stylesheet" href="/css/styles.min.css">
+	</head>
+	<body>
+		<div class="container header">
+			<header>
+				<a href="/" class="home">Michelle Kristensen</a>
+				<h1>MICHELLE KRISTENSEN</h1>
+				<h2>[TAGLINE]</h2>
+				<nav class="main">
+					<a hreF="#" class="small"><span>Modtag nyhedsbrev</span></a>
+					<a hreF="#">Om Michelle</a>
+					<a hreF="#">Presse</a>
+					<a hreF="#">Bøger</a>
+					<a hreF="#" class="last">Kontakt</a>
+				</nav>
+				<nav class="secondary">
+					<a hreF="#">Bootcamps</a>
+					<a hreF="#">En til en</a>
+					<a hreF="#">Træn &amp; Spis</a>
+					<a hreF="#">Foredrag</a>
+				</nav>
+				<div class="flexslider">
+				  <ul class="slides">
+				    <li>
+				      <img src="/images/slide1.jpg" alt="" />
+				    </li>
+				    <li>
+				      <img src="/images/slide2.jpg" alt="" />
+				    </li>
+				    <li>
+				      <img src="/images/slide3.jpg" alt="" />
+				    </li>
+				    <li>
+				      <img src="/images/slide4.jpg" alt="" />
+				    </li>
+				  </ul>
+				</div>
+			</header>
+		</div>
+		<div class="container content">
+			<div class="cart">
+				<table cellpadding="0" cellspacing="0" border="0">
+					<thead>
+						<tr>
+							<th class="text">Vare</th>
+							<th nowrap="nowrap" class="amount">Antal</th>
+							<th class="numeric price">Pris</th>
+							<th class="numeric total">Total</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Varename</td>
+							<td nowrap="nowrap" class="text">3 stk.</td>
+							<td nowrap="nowrap" class="numeric">150,00</td>
+							<td nowrap="nowrap" class="numeric">DKK 150,00</td>
+						</tr>
+						<tr>
+							<td>Varename</td>
+							<td nowrap="nowrap" class="text">3 stk.</td>
+							<td nowrap="nowrap" class="numeric">150,00</td>
+							<td nowrap="nowrap" class="numeric">DKK 150,00</td>
+						</tr>
+						<tr>
+							<td>Varename</td>
+							<td nowrap="nowrap" class="text">3 stk.</td>
+							<td nowrap="nowrap" class="numeric">150,00</td>
+							<td nowrap="nowrap" class="numeric">DKK 150,00</td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr class="vat">
+							<td colspan="3" nowrap="nowrap">Her af moms</td>
+							<td nowrap="nowrap" class="numeric">DKK 50,00</td>
+						</tr>
+						<tr class="total">
+							<td colspan="3" nowrap="nowrap">Total</td>
+							<td nowrap="nowrap" class="numeric">DKK 650,00</td>
+						</tr>
+					</tfoot>
+				</table>
+				<form class="cart">
+					<div class="split left">
+						<fieldset>
+							<legend>Er du allerede kunde ?</legend>
+							<span class="helper">Hvis du har købt noget før, logger du ind her</span>
+							<input placeholder="Username" type="text" value="" name="exst_user" id="exst_user" class="text">
+							<input placeholder="Password" type="password" value="" name="exst_pass" id="exst_pass" class="text">
+							<input type="button" value="Login" name="exst_submitter" id="exst_submitter" class="submitter">
+						</fieldset>
+					</div>
+					<div class="split right">
+						<fieldset>
+							<legend>Er du ny kunde ?</legend>
+							<span class="helper">Din konto oprettes først (automatisk), når du afslutter dit køb</span>
+							<input placeholder="Username" type="text" value="" name="new_user" id="new_user" class="text">
+							<input placeholder="Password" type="password" value="" name="new_pass" id="new_pass" class="text">
+							<input type="button" value="Login" name="new_submitter" id="new_submitter" class="submitter">
+						</fieldset>
+					</div>
+					<div class="split center">
+						<fieldset>
+							<legend>Dine informationer</legend>
+							<span class="helper">Ønsker du levering til anden adresse så anfør venligst i kommentarfeltet</span>
+							<input placeholder="Fornavn" type="text" value="" name="cart_firstname" id="cart_firstname" class="text">
+							<input placeholder="Efternavn" type="text" value="" name="cart_lastname" id="cart_lastname" class="text">
+							<input placeholder="E-mail adresse" type="email" value="" name="cart_email" id="cart_email" class="text">
+							<input placeholder="Adresse" type="text" value="" name="cart_street" id="cart_street" class="text">
+							<input placeholder="Postnummer" type="text" value="" name="cart_zipcode" id="cart_zipcode" class="text">
+							<input placeholder="By" type="text" value="" name="cart_city" id="cart_city" class="text">
+							<select name="cart_country" id="cart_country">
+								<option value="0">Land</option>
+								<option value="1">Danmark</option>
+								<option value="2">Norge</option>
+								<option value="3">Sverige</option>
+							</select>
+							
+							<input placeholder="Mobil telefon" type="text" value="" name="cart_cellphone" id="cart_cellphone" class="text">
+							<textarea placeholder="Kommentar"></textarea>
+							<label for="cart_conditions" class="checkbox">Ja</label>
+							<span class="newslettertext">jeg accepterer betingelser og vilkår</span>
+							<input type="checkbox" value="true" name="cart_conditions" id="cart_conditions" class="checkbox">
+							<input type="button" value="Gennemfør betaling" name="cart_submitter" id="cart_submitter" class="submitter">
+						</fieldset>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="container content">
+			<div class="footersection shop">
+				<h2>Shop</h2>
+				<div class="product">
+					<a href="#">
+						<img src="/images/productlist_image.jpg" alt="" />
+						<div class="manchet">Bog, pære, æble, banan</div>
+					</a>
+					<a href="#" class="addtocart">Køb</a>
+					<span class="price">DKK 150,-</span>
+				</div>
+				<div class="product">
+					<a href="#">
+						<h1>Bootcamp</h1>
+						<h2>København</h2>
+						<div class="manchet">Bog, pære, æble, banan</div>
+					</a>
+					<a href="#" class="addtocart">Køb</a>
+					<span class="price">DKK 150,-</span>
+				</div>
+				<div class="product">
+					<a href="#">
+						<img src="/images/productlist_image.jpg" alt="" />
+						<div class="manchet">Bog, pære, æble, banan</div>
+					</a>
+					<a href="#" class="addtocart">Køb</a>
+					<span class="price">DKK 150,-</span>
+				</div>
+			</div>
+			<div class="footersection instagram">
+				<h2>Instagram</h2>
+				<div class="images">
+					<a href="#" class="first">
+						<img src="/images/insta1.jpg" alt="" />
+					</a>
+					<a href="#">
+						<img src="/images/insta1.jpg" alt="" />
+					</a>
+					<a href="#">
+						<img src="/images/insta1.jpg" alt="" />
+					</a>
+					<a href="#" class="last">
+						<img src="/images/insta1.jpg" alt="" />
+					</a>
+				</div>
+			</div>			
+		</div>
+		<div class="container contact">
+			<span class="name">Michelle Kristensen</span>
+			<span class="email"><a href="mailto:info@michellekristensen.dk">info@michellekristensen.dk</a></span>
+			<span class="phone">+45 24471749</span>
+			<span class="newsletter"><a href="#">Tilmeld nyhedsbrev</a></span>
+		</div>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+		<script src="/js/functions.min.js"></script>
+		<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+		<script>
+			(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+			function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+			e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+			e.src='//www.google-analytics.com/analytics.js';
+			r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+
+			ga('create','UA-XXXXX-X');ga('send','pageview');
+		</script>
+	</body>
+</html>

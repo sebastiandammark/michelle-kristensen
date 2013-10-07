@@ -1,0 +1,664 @@
+@import url(http://fonts.googleapis.com/css?family=Oswald:400,300);
+@font-face {
+  font-family: 'Univers';
+  src: url("/fonts/UniversLTStd-LightUltraCn.otf");
+}
+
+/* Media Queries */
+/* Progressive enhancement */
+/* Misc
+--------------------------------------------------------------------------------*/
+/* line 1, ../../app/sass/partials/base/_extends.scss */
+.left {
+  float: left;
+}
+
+/* line 5, ../../app/sass/partials/base/_extends.scss */
+.right {
+  float: right;
+}
+
+/* line 9, ../../app/sass/partials/base/_extends.scss */
+.center {
+  clear: both;
+  display: block;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   HTML5 display definitions
+   ========================================================================== */
+/* line 6, ../../app/sass/partials/base/_elements.scss */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+nav,
+section,
+summary {
+  display: block;
+}
+
+/* line 21, ../../app/sass/partials/base/_elements.scss */
+audio,
+canvas,
+video {
+  display: inline-block;
+}
+
+/* line 27, ../../app/sass/partials/base/_elements.scss */
+*,
+*:after,
+*:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-touch-callout: none;
+  background-repeat: no-repeat;
+}
+
+/* line 36, ../../app/sass/partials/base/_elements.scss */
+html, body {
+  height: 100%;
+  width: 100%;
+  border: none;
+  margin: 0;
+  padding: 0;
+  font-family: "Verdana", sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+}
+
+/* line 47, ../../app/sass/partials/base/_elements.scss */
+body {
+  background: url('../../images/body_bg.gif');
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+/* line 55, ../../app/sass/partials/base/_elements.scss */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+
+/* line 59, ../../app/sass/partials/base/_elements.scss */
+img {
+  border: none;
+}
+
+/* line 1, ../../app/sass/partials/layout/_all.scss */
+div.container {
+  position: relative;
+  width: 850px;
+  margin: 0 auto;
+  background: #fff;
+  margin-top: 70px;
+  border: 1px solid #f3f3f3;
+  padding: 10px 15px;
+  overflow: hidden;
+}
+/* line 11, ../../app/sass/partials/layout/_all.scss */
+div.container.content {
+  margin-top: 40px;
+}
+/* line 15, ../../app/sass/partials/layout/_all.scss */
+div.container.header {
+  overflow: visible;
+}
+/* line 19, ../../app/sass/partials/layout/_all.scss */
+div.container.contact {
+  margin: 20px auto 20px;
+}
+
+/* line 24, ../../app/sass/partials/layout/_all.scss */
+a.home {
+  position: absolute;
+  display: block;
+  top: -35px;
+  left: -30px;
+  width: 240px;
+  height: 240px;
+  background: url('../../images/logo.png') center no-repeat;
+  text-indent: -9999px;
+}
+
+/* line 35, ../../app/sass/partials/layout/_all.scss */
+header h1, header h2 {
+  text-align: center;
+  margin-left: 195px;
+}
+
+/* line 40, ../../app/sass/partials/layout/_all.scss */
+header h2 {
+  margin-bottom: 120px;
+}
+
+/* line 44, ../../app/sass/partials/layout/_all.scss */
+div.split {
+  width: 49%;
+}
+
+/* line 1, ../../app/sass/partials/modules/_navigation.scss */
+nav {
+  width: 193px;
+  height: 341px;
+  display: inline-block;
+  vertical-align: top;
+}
+/* line 7, ../../app/sass/partials/modules/_navigation.scss */
+nav a {
+  font-family: 'Univers';
+  font-size: 55px;
+  display: block;
+  width: 100%;
+  height: 65px;
+  line-height: 65px;
+  margin-bottom: 4px;
+  vertical-align: center;
+  text-align: left;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+/* line 21, ../../app/sass/partials/modules/_navigation.scss */
+nav.main a {
+  background: #f1f9fa;
+  border: 1px solid #eef5f6;
+  color: #9293ac;
+  padding: 6px 0 0 10px;
+}
+/* line 27, ../../app/sass/partials/modules/_navigation.scss */
+nav.main a.small {
+  background: #fff;
+  border: 1px solid #f6e5eb;
+  color: #9293ac;
+  font-size: 30px;
+  padding: 0;
+}
+/* line 34, ../../app/sass/partials/modules/_navigation.scss */
+nav.main a.small span {
+  display: block;
+  height: 100%;
+  border: 4px solid #fbe9ef;
+  padding-left: 10px;
+}
+/* line 42, ../../app/sass/partials/modules/_navigation.scss */
+nav.main a.last {
+  margin-bottom: 0;
+}
+/* line 46, ../../app/sass/partials/modules/_navigation.scss */
+nav.main a:hover, nav.main a.active {
+  background: #e3f3f5;
+  border: 1px solid #dae8ea;
+  color: #252759;
+}
+/* line 53, ../../app/sass/partials/modules/_navigation.scss */
+nav.secondary a {
+  height: 82.25px;
+  line-height: 82.25px;
+  background: #f9fae3;
+  border: 1px solid #f4f5e0;
+  color: #848486;
+  padding: 9px 0 0 10px;
+}
+/* line 61, ../../app/sass/partials/modules/_navigation.scss */
+nav.secondary a:hover, nav.secondary a.active {
+  background: #f3f5c8;
+  border: 1px solid #e9ebc2;
+  color: #09090d;
+}
+
+/* line 1, ../../app/sass/partials/modules/_flexslider.scss */
+header .flexslider {
+  height: 341px;
+  width: 422px;
+  display: inline-block;
+}
+
+/* line 1, ../../app/sass/partials/modules/_productlist.scss */
+.footersection {
+  height: 160px;
+  width: 100%;
+  padding: 4px;
+  background-color: #fbeaef;
+  font-size: 0px;
+}
+/* line 8, ../../app/sass/partials/modules/_productlist.scss */
+.footersection > h2 {
+  width: 25%;
+  display: inline-block;
+  font-family: 'Univers';
+  font-size: 150px;
+  text-transform: uppercase;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  color: #710f14;
+}
+/* line 20, ../../app/sass/partials/modules/_productlist.scss */
+.footersection.instagram > h2 {
+  color: #000;
+  font-size: 65px;
+}
+
+/* line 26, ../../app/sass/partials/modules/_productlist.scss */
+.product {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  background-color: #fff;
+  width: 25%;
+  height: 100%;
+  color: #000;
+  font-size: 14px;
+}
+/* line 37, ../../app/sass/partials/modules/_productlist.scss */
+.product a {
+  display: block;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #000;
+}
+/* line 43, ../../app/sass/partials/modules/_productlist.scss */
+.product a h1, .product a h2 {
+  color: #000;
+  font-family: 'Univers';
+  margin: 0;
+  padding: 0;
+}
+/* line 50, ../../app/sass/partials/modules/_productlist.scss */
+.product a h1 {
+  font-size: 73px;
+  line-height: 84px;
+  height: 70px;
+}
+/* line 56, ../../app/sass/partials/modules/_productlist.scss */
+.product a h2 {
+  font-size: 38px;
+  line-height: 30px;
+}
+/* line 61, ../../app/sass/partials/modules/_productlist.scss */
+.product a.addtocart {
+  position: absolute;
+  bottom: 0px;
+  left: 5px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+/* line 70, ../../app/sass/partials/modules/_productlist.scss */
+.product .manchet, .product .addtocart, .product .price {
+  padding: 0 5px;
+}
+/* line 74, ../../app/sass/partials/modules/_productlist.scss */
+.product .price {
+  position: absolute;
+  bottom: 0px;
+  right: 5px;
+}
+/* line 80, ../../app/sass/partials/modules/_productlist.scss */
+.product img {
+  display: block;
+  margin: 0 auto 10px;
+}
+
+/* line 87, ../../app/sass/partials/modules/_productlist.scss */
+.instagram .images {
+  display: inline-block;
+  width: 75%;
+  background: #fff;
+  padding: 4px;
+}
+/* line 93, ../../app/sass/partials/modules/_productlist.scss */
+.instagram .images a {
+  display: inline-block;
+  width: 146px;
+  margin-right: 4px;
+}
+/* line 98, ../../app/sass/partials/modules/_productlist.scss */
+.instagram .images a.last {
+  margin: 0;
+}
+/* line 102, ../../app/sass/partials/modules/_productlist.scss */
+.instagram .images a img {
+  width: 100%;
+  height: auto;
+}
+
+/* line 1, ../../app/sass/partials/modules/_contact.scss */
+.container.contact {
+  text-align: center;
+}
+/* line 4, ../../app/sass/partials/modules/_contact.scss */
+.container.contact span {
+  display: block;
+}
+/* line 7, ../../app/sass/partials/modules/_contact.scss */
+.container.contact span a {
+  color: #000;
+  text-decoration: none;
+}
+/* line 11, ../../app/sass/partials/modules/_contact.scss */
+.container.contact span a:hover {
+  text-decoration: underline;
+}
+/* line 16, ../../app/sass/partials/modules/_contact.scss */
+.container.contact span.name {
+  text-transform: uppercase;
+}
+
+/* line 1, ../../app/sass/partials/modules/_content_packages.scss */
+div.packages {
+  font-size: 0;
+}
+/* line 4, ../../app/sass/partials/modules/_content_packages.scss */
+div.packages a {
+  display: inline-block;
+  width: 24.25%;
+  margin-right: 1%;
+  color: #000;
+  text-decoration: none;
+  font-size: 14px;
+}
+/* line 12, ../../app/sass/partials/modules/_content_packages.scss */
+div.packages a.last {
+  margin-right: 0;
+}
+/* line 17, ../../app/sass/partials/modules/_content_packages.scss */
+div.packages header {
+  background-color: #f3f5c9;
+  height: 183px;
+  border-bottom: 1px solid #e9ebc3;
+  padding: 15px 8px 0;
+}
+/* line 23, ../../app/sass/partials/modules/_content_packages.scss */
+div.packages header h2, div.packages header h3 {
+  font-family: 'Univers';
+  margin: 0;
+  text-align: left;
+  text-transform: uppercase;
+  font-size: 50px;
+  line-height: 52px;
+}
+/* line 33, ../../app/sass/partials/modules/_content_packages.scss */
+div.packages .manchet h4 {
+  text-transform: uppercase;
+}
+
+/* line 2, ../../app/sass/partials/modules/_content_events.scss */
+div.events .event {
+  background: #fbe9ef;
+  border: 1px solid #ecdde2;
+  height: 90px;
+  padding: 0 10px;
+  margin-bottom: 12px;
+}
+/* line 9, ../../app/sass/partials/modules/_content_events.scss */
+div.events .event.last {
+  margin-bottom: 0;
+}
+/* line 14, ../../app/sass/partials/modules/_content_events.scss */
+div.events span {
+  display: inline-block;
+  vertical-align: top;
+  line-height: 100px;
+  width: 24.6%;
+  font-family: 'Univers';
+  font-size: 55px;
+  text-transform: uppercase;
+}
+/* line 23, ../../app/sass/partials/modules/_content_events.scss */
+div.events span.name {
+  line-height: 45px;
+  font-size: 30px;
+}
+/* line 28, ../../app/sass/partials/modules/_content_events.scss */
+div.events span.date, div.events span.join {
+  text-align: center;
+}
+/* line 32, ../../app/sass/partials/modules/_content_events.scss */
+div.events span a {
+  color: #000;
+  text-decoration: none;
+}
+/* line 36, ../../app/sass/partials/modules/_content_events.scss */
+div.events span a:hover {
+  text-decoration: underline;
+}
+
+/* line 1, ../../app/sass/partials/modules/_content_coaches.scss */
+div.coaches {
+  margin-top: 20px;
+  font-size: 0;
+}
+/* line 5, ../../app/sass/partials/modules/_content_coaches.scss */
+div.coaches .coach {
+  display: inline-block;
+  width: 24.25%;
+  margin-right: 1%;
+  color: #000;
+  text-decoration: none;
+  font-size: 14px;
+}
+/* line 13, ../../app/sass/partials/modules/_content_coaches.scss */
+div.coaches .coach.last {
+  margin-right: 0;
+}
+/* line 18, ../../app/sass/partials/modules/_content_coaches.scss */
+div.coaches header {
+  position: relative;
+  padding: 0;
+}
+/* line 22, ../../app/sass/partials/modules/_content_coaches.scss */
+div.coaches header h3 {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  color: #fff;
+  font-family: 'Univers';
+  margin: 0;
+  text-align: left;
+  text-transform: uppercase;
+  font-size: 50px;
+  line-height: 52px;
+}
+/* line 35, ../../app/sass/partials/modules/_content_coaches.scss */
+div.coaches header img {
+  width: 100%;
+}
+/* line 40, ../../app/sass/partials/modules/_content_coaches.scss */
+div.coaches .manchet h4 {
+  text-transform: uppercase;
+}
+
+/* line 1, ../../app/sass/partials/modules/_forms.scss */
+input.text, textarea, select {
+  background-color: #cccccc;
+  height: 32px;
+  line-height: 32px;
+  border: none;
+  margin: 0 0 5px 0;
+  padding: 0;
+  width: 100%;
+  outline: none;
+  padding: 0 5px;
+  display: block;
+}
+/* line 108, ../../app/sass/partials/base/_mixins.scss */
+input.text.placeholder, textarea.placeholder, select.placeholder {
+  color: #000;
+  text-transform: uppercase;
+}
+/* line 109, ../../app/sass/partials/base/_mixins.scss */
+input.text:-moz-placeholder, textarea:-moz-placeholder, select:-moz-placeholder {
+  color: #000;
+  text-transform: uppercase;
+}
+/* line 110, ../../app/sass/partials/base/_mixins.scss */
+input.text::-moz-placeholder, textarea::-moz-placeholder, select::-moz-placeholder {
+  color: #000;
+  text-transform: uppercase;
+}
+/* line 111, ../../app/sass/partials/base/_mixins.scss */
+input.text:-ms-input-placeholder, textarea:-ms-input-placeholder, select:-ms-input-placeholder {
+  color: #000;
+  text-transform: uppercase;
+}
+/* line 112, ../../app/sass/partials/base/_mixins.scss */
+input.text::-webkit-input-placeholder, textarea::-webkit-input-placeholder, select::-webkit-input-placeholder {
+  color: #000;
+  text-transform: uppercase;
+}
+
+/* line 19, ../../app/sass/partials/modules/_forms.scss */
+select option {
+  color: #000;
+  text-transform: uppercase;
+}
+
+/* line 24, ../../app/sass/partials/modules/_forms.scss */
+input.checkbox {
+  visibility: hidden;
+}
+
+/* line 28, ../../app/sass/partials/modules/_forms.scss */
+input.submitter {
+  background-color: #fbe9ef;
+  border: 1px solid #efdfe5;
+  height: 32px;
+  line-height: 32px;
+  padding: 0 5px;
+  text-transform: uppercase;
+  font-weight: 400;
+  display: block;
+  margin: 5px 0 0 0;
+  width: 100%;
+  font-size: 14px;
+}
+/* line 41, ../../app/sass/partials/modules/_forms.scss */
+input.submitter:hover {
+  cursor: pointer;
+  background-color: #cccccc;
+  border-color: #cccccc;
+}
+
+/* line 48, ../../app/sass/partials/modules/_forms.scss */
+label.checkbox {
+  display: inline-block;
+  background-color: #fbe9ef;
+  border: 1px solid #efdfe5;
+  height: 32px;
+  line-height: 32px;
+  padding: 0 5px;
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+/* line 59, ../../app/sass/partials/modules/_forms.scss */
+label.checkbox:hover {
+  cursor: pointer;
+  background-color: #cccccc;
+  border-color: #cccccc;
+}
+/* line 65, ../../app/sass/partials/modules/_forms.scss */
+label.checkbox.active {
+  background-color: #cccccc;
+  border-color: #cccccc;
+}
+
+/* line 71, ../../app/sass/partials/modules/_forms.scss */
+fieldset {
+  margin: 0 0 30px 0;
+  padding: 0;
+  border: none;
+}
+/* line 76, ../../app/sass/partials/modules/_forms.scss */
+fieldset legend {
+  padding: 0;
+  margin: 0;
+  padding-bottom: 15px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+/* line 84, ../../app/sass/partials/modules/_forms.scss */
+fieldset .helper {
+  font-size: 10px;
+  display: block;
+  margin-bottom: 15px;
+}
+/* line 90, ../../app/sass/partials/modules/_forms.scss */
+fieldset textarea {
+  height: 199px;
+  line-height: 20px;
+}
+
+/* line 96, ../../app/sass/partials/modules/_forms.scss */
+form h4 {
+  font-size: 20px;
+  margin-top: 0px;
+}
+
+/* line 103, ../../app/sass/partials/modules/_forms.scss */
+form.contact div.split fieldset:last-child {
+  margin-bottom: 0;
+}
+/* line 107, ../../app/sass/partials/modules/_forms.scss */
+form.contact span.newslettertext {
+  font-size: 12px;
+  display: inline-block;
+  height: 32px;
+  line-height: 16px;
+  width: 57%;
+  vertical-align: top;
+}
+
+/* line 1, ../../app/sass/partials/modules/_cart.scss */
+.cart table {
+  width: 100%;
+  color: #000;
+}
+/* line 5, ../../app/sass/partials/modules/_cart.scss */
+.cart table th, .cart table td {
+  padding: 3px;
+}
+/* line 9, ../../app/sass/partials/modules/_cart.scss */
+.cart table th.text {
+  width: 60%;
+  text-align: left;
+}
+/* line 14, ../../app/sass/partials/modules/_cart.scss */
+.cart table th.amount {
+  text-align: left;
+}
+/* line 18, ../../app/sass/partials/modules/_cart.scss */
+.cart table .numeric {
+  text-align: right;
+}
+/* line 22, ../../app/sass/partials/modules/_cart.scss */
+.cart table .amount, .cart table .price, .cart table .total {
+  width: 20%;
+}
+/* line 26, ../../app/sass/partials/modules/_cart.scss */
+.cart table tfoot td {
+  text-align: right;
+  font-weight: bold;
+}
+
+/* line 33, ../../app/sass/partials/modules/_cart.scss */
+form.cart legend {
+  padding-bottom: 0px;
+}
+/* line 37, ../../app/sass/partials/modules/_cart.scss */
+form.cart span.newslettertext {
+  font-size: 12px;
+  display: inline-block;
+  height: 32px;
+  line-height: 32px;
+  width: 57%;
+  vertical-align: top;
+}

@@ -1,0 +1,45 @@
+.cart table {
+	width: 100%;
+	color: #000;
+	
+	th, td {
+		padding: 3px;
+	}
+	
+	th.text {
+		width: 60%;
+		text-align: left;
+	}
+	
+	th.amount {
+		text-align: left;
+	}
+	
+	.numeric {
+		text-align: right;
+	}
+	
+	.amount, .price, .total {
+		width: 20%;
+	}
+	
+	tfoot td {
+		text-align: right;
+		font-weight: bold;
+	}
+}
+
+form.cart {
+	legend {
+		padding-bottom: 0px;
+	}
+	
+	span.newslettertext {
+		font-size: 12px;
+		display: inline-block;
+		height: 32px;
+		line-height: 32px;
+		width: 57%;
+		vertical-align: top;
+	}
+}
