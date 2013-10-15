@@ -128,6 +128,7 @@ module.exports = function(grunt) {
 		  assets: {
 		    files: [
 		      {expand: true, flatten: true, src: ['app/assets/fonts/*'], dest: 'public/fonts/', filter: 'isFile'},
+		      {expand: true, flatten: true, src: ['app/assets/images/*.svg'], dest: 'public/images/', filter: 'isFile'},
 					{expand: true, flatten: true, src: ['app/markup/*'], dest: 'public/', filter: 'isFile'}
 		    ]
 		  },
@@ -167,7 +168,7 @@ module.exports = function(grunt) {
   // Default task.
   grunt.registerTask('default', ['watch']);
   grunt.registerTask('build', ['clean', 'imagemin', 'copy:assets', 'compass:dev', 'concat:js', 'concat:css', 'cssmin:minify', 'copy:temps']);
-  grunt.registerTask('dist', ['clean', 'imagemin', 'copy:assets', 'compass:dev', 'concat:js', 'concat:cssdist', 'cssmin:minify', 'copy:temps']);
+  grunt.registerTask('dist', ['clean', 'imagemin', 'copy:assets', 'compass:dev', 'concat:js', 'concat:cssdist', 'cssmin:minify', 'uglify:js']);
   grunt.registerTask('deploy:stage', ['build', 'ftp-deploy:stage']);
   grunt.registerTask('deploy:dist', ['dist', 'ftp-deploy:stage']);
 };

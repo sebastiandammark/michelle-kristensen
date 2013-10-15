@@ -14,15 +14,15 @@ div.events {
 	span {
 		display: inline-block;
 		vertical-align: top;
-		line-height: 100px;
+		line-height: 90px;
 		width: 24.6%;
-		font-family: 'Univers';
-		font-size: 55px;
+		font-family: 'Oswald';
+		font-size: 34px;
 		text-transform: uppercase;
 		
 		&.name {
 			line-height: 45px;
-			font-size: 30px;
+			font-size: 22px;
 		}
 		
 		&.date, &.join {

@@ -5,12 +5,12 @@ nav {
 	vertical-align: top;
 	
 	a {
-		font-family: 'Univers';
-		font-size: 55px;
+		font-family: 'Oswald';
+		font-size: 33px;
 		display: block;
 		width: 100%;
 		height: 65px;
-		line-height: 65px;
+		line-height: 52px;
 		margin-bottom: 4px;
 		vertical-align: center;
 		text-align: left;
@@ -28,7 +28,7 @@ nav {
 			background: #fff;
 			border: 1px solid #f6e5eb;
 			color: #9293ac;
-			font-size: 30px;
+			font-size: 19px;
 			padding: 0;
 			
 			span {
@@ -52,7 +52,7 @@ nav {
 
 	&.secondary a {
 		height: 82.25px;
-		line-height: 82.25px;
+		line-height: 63.25px;
 		background: #f9fae3;
 		border: 1px solid #f4f5e0;
 		color: #848486;

@@ -8,8 +8,9 @@
 	> h2 {
 		width: 25%;
 		display: inline-block;
-		font-family: 'Univers';
-		font-size: 150px;
+		font-family: 'Oswald';
+		font-size: 88px;
+		line-height: 88px;
 		text-transform: uppercase;
 		vertical-align: top;
 		margin: 0;
@@ -19,7 +20,8 @@
 	
 	&.instagram > h2 {
 		color: #000;
-		font-size: 65px;
+		font-size: 42px;
+		line-height: 42px;
 	}
 }
 
@@ -42,20 +44,21 @@
 		
 		h1, h2 {
 			color: #000;
-			font-family: 'Univers';
+			font-family: 'Oswald';
 			margin: 0;
 			padding: 0;
 		}
 		
 		h1 {
-			font-size: 73px;
-			line-height: 84px;
-			height: 70px;
+			font-size: 45px;
+			line-height: 45px;
+			height: 50px;
 		}
 		
 		h2 {
-			font-size: 38px;
-			line-height: 30px;
+			font-size: 25px;
+			line-height: 25px;
+			margin-bottom: 5px;
 		}
 		
 		&.addtocart {

@@ -30,6 +30,10 @@ a.home {
 	height: 240px;
 	background: image-url('logo.png') center no-repeat;
 	text-indent: -9999px;
+	
+	.svg & {
+		background: image-url('logo.svg') center no-repeat;
+	}
 }
 
 header h1, header h2 {
