@@ -1,0 +1,39 @@
+form.search {
+	position: absolute;
+	right: 19px;
+	top: 178px;
+	margin: 0px;
+	padding: 0px;
+	display: inline;
+
+	input {
+		margin: 0px;
+		padding: 0px;
+		display: inline-block;
+		vertical-align: top;
+		background-color: #fbe9ef;
+		border: 1px solid #efdfe4;
+		height: 32px;
+		
+		&.searchtext {
+			@include input-placeholder {
+				color: #737073;
+				text-transform: uppercase;
+			}
+			
+			border-right: none;
+			padding: 0 5px;
+		}
+		
+		&.searchsubmit {
+			border-left: none;
+			width: 32px;
+			text-indent: -9999px;
+			background-image: image-url('search_submit.gif');
+		}
+		
+		&:focus {
+			outline: none;
+		}
+	}
+}

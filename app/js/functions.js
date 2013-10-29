@@ -4,7 +4,6 @@ $(document).ready(function() {
   });
 
 	$('input, textarea').placeholder();
-	
 
 	$('body').delegate('label.checkbox', 'click', function() {
 		var checkBoxes = $('input[id="' + $(this).attr('for') + '"]');
